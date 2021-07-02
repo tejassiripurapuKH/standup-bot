@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: standup-bot-deployment
+  namespace: tejas
+  labels:
+    app: standup-bot
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: standup-bot
+  template:
+    metadata:
+      labels:
+        app: standup-bot
+    spec:
+      containers:
+      - name: standup-bot
+        image: tejassiripurapu/standup-bot:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 8000
+        env:
+        - name: JIRA_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: standup-bot-secrets
+              key: JIRA_API_TOKEN
+        - name: SLACK_BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: standup-bot-secrets
+              key: SLACK_BOT_TOKEN
+        - name: SLACK_APP_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: standup-bot-secrets
+              key: SLACK_APP_TOKEN

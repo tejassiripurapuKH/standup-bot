@@ -1,0 +1,6 @@
+jira
+slack_sdk
+falcon
+gunicorn
+slack_bolt
+requests
