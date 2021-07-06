@@ -14,8 +14,8 @@ class JiraInstance:
         self.jira = JIRA(server="https://komodohealth.atlassian.net", basic_auth=("tejas.siripurapu@komodohealth.com", os.environ["JIRA_API_TOKEN"]))
 
     def getStandupUpdates(self, username):
-        infra_issues = self.jira.search_issues(f'(project="IN" or project=DINF) and assignee = "{username}"')
-        # infra_issues += self.jira.search_issues(f'project=DINF and assignee = "{username}"')
+        infra_issues = self.jira.search_issues(f'project="IN" and assignee = "{username}"')
+        infra_issues += self.jira.search_issues(f'project=DINF and assignee = "{username}"')
         ret = []
         for issue in infra_issues:
             last_updated = datetime.strptime(issue.fields.updated.split('T')[0], '%Y-%m-%d').date()
