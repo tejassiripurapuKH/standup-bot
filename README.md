@@ -9,7 +9,7 @@ Slack bot for posting standup and retro updates to channel. Currently
 
 ## Development
 
-Create new commands by adding on to `main.py` refer to other commands for syntax/structure. You will also need to add the Slash Command in the Slack API as well. Use `test-workspace` for testing/development, ask Tejas for access.
+Create new commands by adding on to `main.py` refer to other commands for syntax/structure. You will also need to add the Slash Command in the [Slack API](https://api.slack.com/apps/A0244KM6WG7) as well. Use `test-workspace` for testing/development, ask Tejas for access.
 
 Need to set following environment variables:
 - `JIRA_API_TOKEN`: Jira API token, find in Jira developer settings
